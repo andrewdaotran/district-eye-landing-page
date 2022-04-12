@@ -46,34 +46,48 @@ const NavAndFooter = ({ children }) => {
 						/>
 					</Link>
 				</div>
-
-				<div className='grid mt-4 md:mt-0 grid-cols-5 gap-x-8 justify-items-center mx-4 md:mx-0 md:col-span-2 '>
-					<Link href='/'>
-						<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'>
-							Home
-						</a>
-					</Link>
-					<Link href='#AboutUs'>
-						<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest whitespace-nowrap  w-20 text-center'>
+				{/* Nav Items */}
+				<ul className='grid mt-4 md:mt-0 grid-cols-5 gap-x-8 justify-items-center mx-4 md:mx-0 md:col-span-2 '>
+					<li>
+						<Link href='/'>
+							<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'>
+								Home
+							</a>
+						</Link>
+					</li>
+					<li>
+						<a
+							href='#AboutUs'
+							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest whitespace-nowrap  w-20 text-center'
+						>
 							About Us
 						</a>
-					</Link>
-					<Link href='#Services'>
-						<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'>
+					</li>
+					<li>
+						<a
+							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'
+							href='#Services'
+						>
 							Services
 						</a>
-					</Link>
-					<Link href='#Products'>
-						<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'>
+					</li>
+					<li>
+						<a
+							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'
+							href='#Products'
+						>
 							Products
 						</a>
-					</Link>
-					<Link href='#Contact'>
-						<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'>
+					</li>
+					<li>
+						<a
+							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'
+							href='#Contact'
+						>
 							Contact
 						</a>
-					</Link>
-				</div>
+					</li>
+				</ul>
 			</header>
 			{children}
 			<footer className='grid py-8 mx-4 justify-items-center mt-12 border-t'>

@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../tailwind.config.js'
+import emailjs from '@emailjs/browser'
+
+import axios from 'axios'
 
 const Contact = () => {
 	const fullConfig = resolveConfig(tailwindConfig)
@@ -11,14 +14,13 @@ const Contact = () => {
 		reason: '',
 	})
 	const [screenSize, setScreenSize] = useState(0)
-
-	const API_KEY = 'AIzaSyB_BV6uPvZMnBaeRS2oXtjUJy1mW-Hst1I'
+	const form = useRef()
 
 	const handleForm = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	}
 
-	const submitForm = (e) => {
+	const submitForm = async (e) => {
 		e.preventDefault()
 		if (
 			formData.name === '' ||
@@ -27,6 +29,22 @@ const Contact = () => {
 			formData.reason === ''
 		)
 			return
+
+		emailjs
+			.sendForm(
+				'service_4fag3uj',
+				'template_58o4f4x',
+				form.current,
+				'YQL2ADzf13Rdpq0f2'
+			)
+			.then(
+				(result) => {
+					console.log(result.text)
+				},
+				(error) => {
+					console.log(error.text)
+				}
+			)
 
 		setFormData({
 			name: '',
@@ -75,7 +93,7 @@ const Contact = () => {
 				</h4>
 				<h4 className='text-center mb-8'>
 					Email us at{' '}
-					<span className='text-thirdColor italic'>
+					<span className='text-thirdColor italic '>
 						vision@thedistricteye.com
 					</span>{' '}
 					to book an appointment or use the form below.
@@ -83,13 +101,25 @@ const Contact = () => {
 				{/* Form and Map Container */}
 				<div className='grid xl:grid-cols-2 xl:gap-8 max-w-7xl mx-auto'>
 					{/* Form */}
-					<div className='grid grid-cols-5 border border-thirdColor sm:mx-auto md:w-[39rem] shadow-2xl rounded-md mb-8 xl:mb-0'>
-						<div className='  p-4  grid gap-4 col-span-2'>
-							<h5>Name*:</h5>
-							<h5>Phone Number*:</h5>
-							<h5>Email*:</h5>
+					<form
+						className='grid grid-cols-5 border border-thirdColor sm:mx-auto md:w-[39rem] shadow-2xl rounded-md mb-8 xl:mb-0'
+						method='post'
+						ref={form}
+						onSubmit={submitForm}
+					>
+						<div className=' p-4  grid gap-4 col-span-2'>
+							<h5>
+								Name<span className='text-[#EF4444]'>*</span>:
+							</h5>
+							<h5 className='text-indigo-600'>
+								Phone Number<span className='text-[#EF4444]'>*</span>:
+							</h5>
+							<h5>
+								Email<span className='text-[#EF4444]'>*</span> :
+							</h5>
 							<h5 className='h-60  sm:h-48 md:pt-4'>
-								Please specify when you would like to come in. Our hours are*:
+								Please specify when you would like to come in. Our hours are
+								<span className='text-[#EF4444]'>*</span>:
 								<span className='block pt-4'>
 									Monday through Saturday
 									{`${screenSize.screenSize}px` >= fullConfig.theme.screens.sm
@@ -131,13 +161,10 @@ const Contact = () => {
 								onChange={handleForm}
 							/>
 						</div>
-						<button
-							className='col-start-4 col-end-5  mb-4 rounded-md bg-secondaryColor hover:bg-mainColor outline outline-thirdColor px-2 py-1  transition ease-in-out'
-							onClick={submitForm}
-						>
+						<button className='col-start-4 col-end-5  mb-4 rounded-md bg-secondaryColor hover:bg-mainColor outline outline-thirdColor px-2 py-1  transition ease-in-out'>
 							Submit
 						</button>
-					</div>
+					</form>
 					{/* Map */}
 					<div className=''>
 						<iframe
