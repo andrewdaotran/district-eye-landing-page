@@ -3,8 +3,6 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../tailwind.config.js'
 import emailjs from '@emailjs/browser'
 
-import axios from 'axios'
-
 const Contact = () => {
 	const fullConfig = resolveConfig(tailwindConfig)
 	const [formData, setFormData] = useState({
@@ -13,45 +11,98 @@ const Contact = () => {
 		email: '',
 		reason: '',
 	})
+	const [allFieldsBool, setAllFieldsBool] = useState(false)
+	const [nameBool, setNameBool] = useState(false)
+	const [phoneBool, setPhoneBool] = useState(false)
+	const [emailBool, setEmailBool] = useState(false)
+	const [reasonBool, setReasonBool] = useState(false)
 	const [screenSize, setScreenSize] = useState(0)
 	const form = useRef()
+
+	// Change field colors back to normal when user fills
+	useEffect(() => {
+		if (formData.name !== '') {
+			setNameBool(false)
+		}
+		if (formData.phoneNumber !== '') {
+			setPhoneBool(false)
+		}
+		if (formData.email !== '') {
+			setEmailBool(false)
+		}
+		if (formData.reason !== '') {
+			setReasonBool(false)
+		}
+		if (
+			formData.name &&
+			formData.phoneNumber &&
+			formData.email &&
+			formData.reason !== ''
+		) {
+			setAllFieldsBool(false)
+		}
+	}, [formData])
 
 	const handleForm = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	}
 
+	const checkFields = () => {}
+
 	const submitForm = async (e) => {
 		e.preventDefault()
+
+		// Check if fields are filled, if not then change the field not filled to red background color
+		if (formData.name === '') {
+			setAllFieldsBool(true)
+			setNameBool(true)
+		}
+		if (formData.phoneNumber === '') {
+			setAllFieldsBool(true)
+			setPhoneBool(true)
+			console.log('hello')
+		}
+		if (formData.email === '') {
+			setAllFieldsBool(true)
+			setEmailBool(true)
+		}
+		if (formData.reason === '') {
+			setAllFieldsBool(true)
+			setReasonBool(true)
+			console.log('hey')
+		}
+
 		if (
-			formData.name === '' ||
-			formData.phoneNumber === '' ||
-			formData.email === '' ||
-			formData.reason === ''
-		)
-			return
+			formData.name &&
+			formData.phoneNumber &&
+			formData.email &&
+			formData.reason !== ''
+		) {
+			// Emailjs Function
+			emailjs
+				.sendForm(
+					'service_4fag3uj',
+					'template_58o4f4x',
+					form.current,
+					'YQL2ADzf13Rdpq0f2'
+				)
+				.then(
+					(result) => {
+						console.log(result.text)
+					},
+					(error) => {
+						console.log(error.text)
+					}
+				)
 
-		emailjs
-			.sendForm(
-				'service_4fag3uj',
-				'template_58o4f4x',
-				form.current,
-				'YQL2ADzf13Rdpq0f2'
-			)
-			.then(
-				(result) => {
-					console.log(result.text)
-				},
-				(error) => {
-					console.log(error.text)
-				}
-			)
-
-		setFormData({
-			name: '',
-			phoneNumber: '',
-			email: '',
-			reason: '',
-		})
+			// Clear form after submission
+			setFormData({
+				name: '',
+				phoneNumber: '',
+				email: '',
+				reason: '',
+			})
+		}
 	}
 
 	useEffect(() => {
@@ -109,17 +160,17 @@ const Contact = () => {
 					>
 						<div className=' p-4  grid gap-4 col-span-2'>
 							<h5>
-								Name<span className='text-[#EF4444]'>*</span>:
+								Name<span className='text-redColor'>*</span>:
 							</h5>
 							<h5 className='text-indigo-600'>
-								Phone Number<span className='text-[#EF4444]'>*</span>:
+								Phone Number<span className='text-redColor'>*</span>:
 							</h5>
 							<h5>
-								Email<span className='text-[#EF4444]'>*</span> :
+								Email<span className='text-redColor'>*</span> :
 							</h5>
 							<h5 className='h-60  sm:h-48 md:pt-4'>
 								Please specify when you would like to come in. Our hours are
-								<span className='text-[#EF4444]'>*</span>:
+								<span className='text-redColor'>*</span>:
 								<span className='block pt-4'>
 									Monday through Saturday
 									{`${screenSize.screenSize}px` >= fullConfig.theme.screens.sm
@@ -131,36 +182,50 @@ const Contact = () => {
 						<div className='  p-4 grid gap-4 col-span-3'>
 							<input
 								type='text'
-								placeholder='John Doe'
-								className=' border px-2 h-6 rounded-md w-full'
+								placeholder={`${nameBool ? '' : 'John Doe'}`}
+								className={` border px-2 h-6 rounded-md w-full ${
+									nameBool ? ' bg-[#ff6868] ' : null
+								}`}
 								value={formData.name}
 								name='name'
 								onChange={handleForm}
 							/>
 							<input
 								type='tel'
-								placeholder='123-456-7890'
-								className=' border  px-2 h-6 w-full rounded-md'
+								placeholder={`${phoneBool ? '' : '123-456-7890'}`}
+								className={`border  px-2 h-6 w-full rounded-md ${
+									phoneBool ? ' bg-[#ff6868] ' : null
+								}`}
 								value={formData.phoneNumber}
 								name='phoneNumber'
 								onChange={handleForm}
 							/>
 							<input
 								type='email'
-								placeholder='email@example.com'
-								className=' border  px-2 w-full rounded-md'
+								placeholder={`${emailBool ? '' : 'email@example.com'}`}
+								className={`border  px-2 w-full rounded-md ${
+									emailBool ? ' bg-[#ff6868] ' : null
+								}`}
 								value={formData.email}
 								name='email'
 								onChange={handleForm}
 							/>
 							<textarea
 								type='text'
-								className=' border h-60  sm:h-48 w-full resize-none px-2 rounded-md'
+								className={`border h-60  sm:h-48 w-full resize-none px-2 rounded-md ${
+									reasonBool ? ' bg-[#ff6868] ' : null
+								}`}
 								value={formData.reason}
 								name='reason'
 								onChange={handleForm}
 							/>
 						</div>
+						{allFieldsBool ? (
+							<h5 className='col-start-1 col-end-4 pl-4 text-redColor'>
+								Please fill out all fields.
+							</h5>
+						) : null}
+
 						<button className='col-start-4 col-end-5  mb-4 rounded-md bg-secondaryColor hover:bg-mainColor outline outline-thirdColor px-2 py-1  transition ease-in-out'>
 							Submit
 						</button>

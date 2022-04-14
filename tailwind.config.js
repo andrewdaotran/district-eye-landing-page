@@ -13,6 +13,7 @@ module.exports = {
 			fourthColor: '#144D60',
 			fifthColor: '#5F6D69',
 			newTextColor: '#5E5751',
+			redColor: '#EF4444',
 		},
 	},
 	plugins: [],
