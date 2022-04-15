@@ -3,7 +3,7 @@ import React from 'react'
 const AboutUs = () => {
 	return (
 		<section
-			className='mt-24 grid justify-items-center tracking-widest'
+			className='mt-[-6rem] pt-48 md:mt-[-4rem] md:pt-40 grid justify-items-center tracking-widest '
 			id='AboutUs'
 		>
 			<h2 className='font-bold text-3xl pb-4'>Meet The Doctors</h2>

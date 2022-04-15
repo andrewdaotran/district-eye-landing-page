@@ -4,72 +4,46 @@ import { creditCard } from 'react-icons-kit/fa/creditCard'
 import { shield } from 'react-icons-kit/fa/shield'
 import { language } from 'react-icons-kit/fa/language'
 
-const Services = () => {
-	const paymentForms = [
-		'Personal Checks',
-		'American Express',
+import { languages, paymentForms, insurances } from '../utils'
 
-		'Master Card',
-		'Visa',
-		'Discover',
-		'Debit Cards',
-		'FSA / HSA',
-		'Cash',
-	]
-	const insurances = [
-		'VSP',
-		'EyeMed',
-		'Safeguard',
-		'Davis Vision',
-		'Superior Vision',
-		'Spectera',
-		'Medical Eye Services (MES)',
-	]
-	const languages = [
-		'English',
-		'Spanish',
-		'Korean',
-		'Vietnamese',
-		'Mandarin',
-		'Cantonese',
-		'Afrikaans',
-	]
+const Services = () => {
 	return (
 		<section
-			className='mt-24 grid justify-items-center tracking-widest'
+			className='mt-[-6rem] pt-48 md:mt-[-4rem] md:pt-40 grid justify-items-center tracking-widest'
 			id='Services'
 		>
 			<h2 className='font-bold text-3xl pb-4' id='Services'>
 				Our Services
 			</h2>
 			<h3 className=' text-xl pb-8 italic'>What We Do</h3>
-			<div className='mx-8'>
-				<h3 className='text-4xl text-center mb-8  text-thirdColor'>
-					<span className='text-fourthColor  '>Comprehensive eye exams </span>
+			{/* Services List */}
+			<ul className='mx-8 border border-thirdColor rounded-md p-4 md:px-8 list-disc list-inside shadow-2xl mb-12 max-w-2xl'>
+				<li className='text-xl  mb-4  '>
+					<span className='text-thirdColor  '>Comprehensive eye exams </span>
 					for adults and children, which includes a dilation
-				</h3>
-				<h3 className='text-4xl text-center mb-8  text-thirdColor'>
-					<span className='text-fourthColor  '>Contact lens exams </span>
+				</li>
+				<li className='text-xl  mb-4  '>
+					<span className='text-thirdColor  '>Contact lens exams </span>
 					for new and existing wearers, including soft, disposables, torics,
 					multifocals, and RGPs (aka hard lenses)
-				</h3>
-				<h3 className='text-4xl text-center mb-8  text-thirdColor'>
-					Diagnosis and Treatment of{' '}
-					<span className='text-fourthColor  '> Ocular Disease</span>
-				</h3>
-				<h3 className='text-4xl text-center mb-8  text-thirdColor'>
-					Outside <span className='text-fourthColor  '>Prescriptions </span>
+				</li>
+				<li className='text-xl  mb-4  '>
+					<span className='text-thirdColor  '>Diagnosis and Treatment </span> of
+					Ocular Disease
+				</li>
+				<li className='text-xl  mb-4  '>
+					Outside <span className='text-thirdColor  '>Prescriptions </span>
 					filled
-				</h3>
-				<h3 className='text-4xl text-center mb-8  text-thirdColor'>
-					<span className='text-fourthColor  '>Eyeglass </span>
+				</li>
+				<li className='text-xl  mb-4  '>
+					<span className='text-thirdColor  '>Eyeglass </span>
 					repairs and adjustments
-				</h3>
-				<h3 className='text-4xl text-center mb-8  text-thirdColor'>
-					<span className='text-fourthColor  '>LASIK </span>
+				</li>
+				<li className='text-xl  mb-4  '>
+					<span className='text-thirdColor  '>LASIK </span>
 					consultations and co-management
-				</h3>
-			</div>
+				</li>
+			</ul>
 			{/* Service Boxes */}
 			<div className='grid mx-8 gap-y-16 md:gap-y-24 lg:grid-cols-3 lg:gap-x-12 xl:gap-x-32 justify-items-center'>
 				{/* Insurance Plans */}

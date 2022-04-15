@@ -15,6 +15,10 @@ module.exports = {
 			newTextColor: '#5E5751',
 			redColor: '#EF4444',
 		},
+		fontFamily: {
+			anek: ['Anek Odia'],
+			rajdhani: ['Rajdhani'],
+		},
 	},
 	plugins: [],
 }

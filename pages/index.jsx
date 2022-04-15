@@ -1,14 +1,16 @@
 import Head from 'next/head'
-import AboutUs from '../components/AboutUs'
-import Contact from '../components/Contact'
-import Hero from '../components/Hero'
 import NavAndFooter from '../components/NavAndFooter'
-import Products from '../components/Products'
-import Services from '../components/Services'
+import AboutUs from '../components/AboutUs'
+import Contact from '../components//Contact'
+import Hero from '../components//Hero'
+import Modal from '../components//Modal'
+import Products from '../components//Products'
+import Services from '../components//Services'
+import { ModalProvider } from '../contexts/ModalContext'
 
 export default function Home() {
 	return (
-		<div className=''>
+		<div className='font-rajdhani'>
 			<Head>
 				<title>District Eye Care</title>
 				<meta
@@ -17,12 +19,16 @@ export default function Home() {
 				/>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
+
 			<NavAndFooter>
-				<Hero />
-				<AboutUs />
-				<Services />
-				<Products />
-				<Contact />
+				<ModalProvider>
+					<Modal />
+					<Hero />
+					<AboutUs />
+					<Services />
+					<Products />
+					<Contact />
+				</ModalProvider>
 			</NavAndFooter>
 		</div>
 	)

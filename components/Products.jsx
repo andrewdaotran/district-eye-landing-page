@@ -2,7 +2,7 @@ import React from 'react'
 
 const Products = () => {
 	return (
-		<div className='mt-24' id='Products'>
+		<div className='mt-[-6rem] pt-48 md:mt-[-4rem] md:pt-40' id='Products'>
 			<h2
 				className='font-bold text-3xl pb-4 tracking-widest text-center'
 				id='Services'

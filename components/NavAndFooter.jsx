@@ -1,43 +1,20 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import { Icon } from 'react-icons-kit'
-import { facebook } from 'react-icons-kit/fa/facebook'
-import { instagram } from 'react-icons-kit/fa/instagram'
-import { yelp } from 'react-icons-kit/fa/yelp'
+import { socialMedia } from '../utils'
 
-import * as Scroll from 'react-scroll'
-// import {
-// 	Link,
-// 	Button,
-// 	Element,
-// 	Events,
-// 	animateScroll as scroll,
-// 	scrollSpy,
-// 	scroller,
-// } from 'react-scroll'
+import { Link } from 'react-scroll/modules'
 
 const NavAndFooter = ({ children }) => {
-	const socialMedia = [
-		{
-			id: 'facebook',
-			app: facebook,
-			link: 'https://www.facebook.com/thedistricteyecare',
-		},
-		{
-			id: 'instagram',
-			app: instagram,
-			link: 'https://www.instagram.com/thedistricteyecare/',
-		},
-		{
-			id: 'yelp',
-			app: yelp,
-			link: 'https://www.yelp.com/biz/the-district-eye-care-optometry-tustin-3',
-		},
-	]
 	return (
 		<>
-			<header className='grid md:grid-cols-3 md:mx-4 py-4 md:py-8 md:gap-4 items-center  border-b sticky top-0 bg-mainColor'>
+			<header className='grid md:grid-cols-3 md:mx-4 py-4 md:py-8 md:gap-4 items-center  border-b sticky top-0 right-0 left-0 bg-mainColor h-40 md:h-32'>
 				<div className='md:col-span-1  mx-auto'>
-					<Link href='/' className='md:col-span-1  mx-auto'>
+					<Link
+						to='Hero'
+						smooth={true}
+						duration={1000}
+						className='md:col-span-1  mx-auto'
+					>
 						<img
 							src='/logo.gif'
 							width={200}
@@ -47,47 +24,52 @@ const NavAndFooter = ({ children }) => {
 					</Link>
 				</div>
 				{/* Nav Items */}
-				<ul className='grid mt-4 md:mt-0 grid-cols-5 gap-x-8 justify-items-center mx-4 md:mx-0 md:col-span-2 '>
-					<li>
-						<Link href='/'>
-							<a className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'>
-								Home
-							</a>
-						</Link>
-					</li>
-					<li>
-						<a
-							href='#AboutUs'
-							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest whitespace-nowrap  w-20 text-center'
-						>
-							About Us
-						</a>
-					</li>
-					<li>
-						<a
-							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'
-							href='#Services'
-						>
-							Services
-						</a>
-					</li>
-					<li>
-						<a
-							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'
-							href='#Products'
-						>
-							Products
-						</a>
-					</li>
-					<li>
-						<a
-							className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center'
-							href='#Contact'
-						>
-							Contact
-						</a>
-					</li>
-				</ul>
+				<div className='grid mt-4 md:mt-0 grid-cols-5 gap-x-8 justify-items-center mx-4 md:mx-0 md:col-span-2 md:text-lg lg:text-xl xl:text-2xl'>
+					<Link
+						to='Hero'
+						smooth={true}
+						duration={1000}
+						className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center cursor-pointer '
+					>
+						Home
+					</Link>
+
+					<Link
+						to='AboutUs'
+						smooth={true}
+						duration={1000}
+						className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest whitespace-nowrap  w-20 text-center cursor-pointer'
+					>
+						About Us
+					</Link>
+
+					<Link
+						className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center cursor-pointer'
+						to='Services'
+						smooth={true}
+						duration={1000}
+					>
+						Services
+					</Link>
+
+					<Link
+						className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center cursor-pointer'
+						to='Products'
+						smooth={true}
+						duration={1000}
+					>
+						Products
+					</Link>
+
+					<Link
+						className=' hover:text-secondaryColor transition ease-in-out sm:tracking-widest  w-20 text-center cursor-pointer'
+						to='Contact'
+						smooth={true}
+						duration={1000}
+					>
+						Contact
+					</Link>
+				</div>
 			</header>
 			{children}
 			<footer className='grid py-8 mx-4 justify-items-center mt-12 border-t'>

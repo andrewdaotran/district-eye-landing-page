@@ -1,9 +1,12 @@
 import React from 'react'
-import Link from 'next/link'
+import { Link } from 'react-scroll/modules'
 
 const Hero = () => {
 	return (
-		<section className='grid justify-items-center mx-8'>
+		<section
+			className='grid justify-items-center mx-8  mt-[-12rem] pt-48 md:mt-[-10rem] md:pt-40'
+			id='Hero'
+		>
 			<h1 className='text-center font-bold text-xl my-8 tracking-wide'>
 				WE ARE THE <span className='text-[#b6b0aa]'>CLEAR</span> CHOICE FOR
 				<span className='block text-center font-bold text-3xl sm:text-6xl text-fourthColor mt-4 tracking-widest'>
@@ -15,10 +18,13 @@ const Hero = () => {
 				in a professional and personalized setting.
 			</h3>
 			{/* Button */}
-			<Link href='#Contact'>
-				<a className=' mt-8 outline outline-thirdColor px-4 py-2 rounded-md transition ease-in-out bg-secondaryColor hover:bg-mainColor'>
-					Book An Appointment
-				</a>
+			<Link
+				to='Contact'
+				smooth={true}
+				duration={1000}
+				className=' mt-8 border border-thirdColor px-4 py-2 rounded-md transition ease-in-out bg-secondaryColor hover:bg-mainColor cursor-pointer'
+			>
+				Book An Appointment
 			</Link>
 
 			<div className='flex mt-8 flex-col items-center w-full md:justify-evenly md:flex-row '>
@@ -35,9 +41,9 @@ const Hero = () => {
 			</div>
 
 			<img
-				src='/north-shore-picture.jpg'
-				alt=''
-				className='mt-12 rounded-md '
+				src='/district-eye-front.jpg'
+				alt='district-eye-care-photo'
+				className='mt-12 rounded-md max-h-[50rem]'
 			/>
 		</section>
 	)

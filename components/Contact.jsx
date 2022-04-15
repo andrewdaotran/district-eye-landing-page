@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../tailwind.config.js'
 import emailjs from '@emailjs/browser'
+import ModalContext from '../contexts/ModalContext'
 
 const Contact = () => {
 	const fullConfig = resolveConfig(tailwindConfig)
@@ -17,6 +18,7 @@ const Contact = () => {
 	const [emailBool, setEmailBool] = useState(false)
 	const [reasonBool, setReasonBool] = useState(false)
 	const [screenSize, setScreenSize] = useState(0)
+	const { isModalOpen, openModal } = useContext(ModalContext)
 	const form = useRef()
 
 	// Change field colors back to normal when user fills
@@ -46,8 +48,6 @@ const Contact = () => {
 	const handleForm = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
 	}
-
-	const checkFields = () => {}
 
 	const submitForm = async (e) => {
 		e.preventDefault()
@@ -88,7 +88,8 @@ const Contact = () => {
 				)
 				.then(
 					(result) => {
-						console.log(result.text)
+						// Open Modal after submission
+						openModal()
 					},
 					(error) => {
 						console.log(error.text)
@@ -125,7 +126,10 @@ const Contact = () => {
 	}, [])
 
 	return (
-		<section className=' mx-4 mt-24 ' id='Contact'>
+		<section
+			className={` mx-4 mt-[-6rem] pt-48 md:mt-[-4rem] md:pt-40`}
+			id='Contact'
+		>
 			{/* Contact Header */}
 			<div className=''>
 				<h3 className='font-bold  text-3xl tracking-widest text-center pb-4 '>
@@ -146,8 +150,10 @@ const Contact = () => {
 					Email us at{' '}
 					<span className='text-thirdColor italic '>
 						vision@thedistricteye.com
-					</span>{' '}
-					to book an appointment or use the form below.
+					</span>
+					, call us at{' '}
+					<span className='text-thirdColor italic '>(714) 258-7525</span>, or
+					use the form below to book an appointment.
 				</h4>
 				{/* Form and Map Container */}
 				<div className='grid xl:grid-cols-2 xl:gap-8 max-w-7xl mx-auto'>
@@ -162,7 +168,7 @@ const Contact = () => {
 							<h5>
 								Name<span className='text-redColor'>*</span>:
 							</h5>
-							<h5 className='text-indigo-600'>
+							<h5 className=''>
 								Phone Number<span className='text-redColor'>*</span>:
 							</h5>
 							<h5>
@@ -212,6 +218,11 @@ const Contact = () => {
 							/>
 							<textarea
 								type='text'
+								placeholder={`${
+									reasonBool
+										? ''
+										: 'I am due for my annual eye exam and am looking to get a new pair of glasses. I am insured by VSP and will be a new patient.'
+								}`}
 								className={`border h-60  sm:h-48 w-full resize-none px-2 rounded-md ${
 									reasonBool ? ' bg-[#ff6868] ' : null
 								}`}
@@ -226,7 +237,7 @@ const Contact = () => {
 							</h5>
 						) : null}
 
-						<button className='col-start-4 col-end-5  mb-4 rounded-md bg-secondaryColor hover:bg-mainColor outline outline-thirdColor px-2 py-1  transition ease-in-out'>
+						<button className='col-start-4 col-end-5  mb-4 rounded-md bg-secondaryColor hover:bg-mainColor border border-thirdColor px-2 py-1  transition ease-in-out'>
 							Submit
 						</button>
 					</form>
@@ -246,8 +257,6 @@ const Contact = () => {
 					</div>
 				</div>
 			</div>
-			{/* Right Side */}
-			<div className=''></div>
 		</section>
 	)
 }
