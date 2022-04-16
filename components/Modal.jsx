@@ -39,7 +39,11 @@ const Modal = () => {
 					<div className='flex justify-around w-80 '>
 						{socialMedia.map((item) => {
 							return (
-								<a key={item.id} target='_blank' href={item.link}>
+								<a
+									key={item.id}
+									// target='_blank'
+									href={item.link}
+								>
 									<Icon
 										icon={item.app}
 										size={30}
