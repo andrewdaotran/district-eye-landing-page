@@ -30,7 +30,7 @@ const Hero = () => {
 			<div className='flex mt-8 flex-col items-center w-full md:justify-evenly md:flex-row '>
 				<div className='text-center '>
 					<p className='font-bold text-lg'>Hours of Operation:</p>
-					<p className=''>Monday through Saturdays</p>
+					<p className=''>Mondays through Saturdays</p>
 					<p className=''>10:00am - 6:00pm</p>
 				</div>
 				<div className='mt-8 md:mt-0 text-center'>

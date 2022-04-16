@@ -16,11 +16,13 @@ export const paymentForms = [
 export const insurances = [
 	'VSP',
 	'EyeMed',
-	'Safeguard',
+
 	'Davis Vision',
-	'Superior Vision',
+
 	'Spectera',
 	'Medical Eye Services (MES)',
+	'',
+	'',
 ]
 export const languages = [
 	'English',
