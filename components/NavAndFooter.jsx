@@ -7,7 +7,7 @@ import { Link } from 'react-scroll/modules'
 const NavAndFooter = ({ children }) => {
 	return (
 		<>
-			<header className='grid md:grid-cols-3 md:mx-4 py-4 md:py-8 md:gap-4 items-center  border-b sticky top-0 right-0 left-0 bg-mainColor h-40 md:h-32'>
+			<header className='grid md:grid-cols-3 md:mx-4 py-4 md:py-8 md:gap-4 items-center  border-b sticky top-0 right-0 left-0 bg-mainColor h-40 md:h-32 z-10'>
 				<div className='md:col-span-1  mx-auto'>
 					<Link
 						to='Hero'

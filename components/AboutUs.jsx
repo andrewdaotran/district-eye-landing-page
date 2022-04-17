@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const AboutUs = () => {
 	return (
@@ -9,13 +10,24 @@ const AboutUs = () => {
 			<h2 className='font-bold text-3xl pb-4'>Meet The Doctors</h2>
 			<h3 className=' text-xl pb-8 italic'>Learn Who We Are</h3>
 			<div className='grid lg:grid-cols-2 mx-4'>
-				<div className='grid  mx-4 p-4 max-h-sm justify-items-center lg:mx-0 lg:grid-rows-3'>
-					<img
+				<div className='grid  mx-4 p-4 max-h-sm justify-items-center lg:mx-0 lg:grid-rows-3 overflow-hidden relative'>
+					<div className='h-96'>
+						<Image
+							src='/drlieu.jpg'
+							alt=''
+							className='object-contain justify-self-center mb-4 h-72 lg:row-span-1 rounded-lg'
+							// width='220'
+							// height='100'
+							layout='fill'
+							objectFit='cover'
+						/>
+						{/* <img
 						src='/drlieu.jpg'
 						alt=''
 						className='object-contain justify-self-center mb-4 h-72 lg:row-span-1 rounded-lg'
 						// width='200'
-					/>
+					/> */}
+					</div>
 					<div className='bg-secondaryColor  rounded-lg border border-thirdColor p-4 max-w-xl lg:row-start-2 lg:row-end-4 shadow-2xl'>
 						<h3 className='font-bold text-lg mb-4 text-center'>
 							Dr. Megan Lieu
@@ -30,20 +42,24 @@ const AboutUs = () => {
 						</h4>
 						<ul className='list-disc px-4 pb-4'>
 							<li className='text-sm'>
-								Daytona Beach Outpatient VA Clinic (Primary Care and Low Vision)
+								{
+									'Daytona Beach Outpatient VA Clinic (Primary Care and Low Vision)'
+								}
 							</li>
 							<li className='text-sm'>
-								University of Chicago, DCAM (Emergency and Pediatric Care,
-								Neurological and Retinal Services)
+								{
+									'University of Chicago, DCAM (Emergency and Pediatric Care, Neurological and Retinal Services)'
+								}
 							</li>
 							<li className='text-sm'>
-								VA Hudson Valley Health Care System (Primary Care and Ocular
-								Disease with emphasis on glaucoma, diabetic and hypertensive
-								retinopathy)
+								{
+									'VA Hudson Valley Health Care System (Primary Care and Ocular Disease with emphasis on glaucoma, diabetic and hypertensive retinopathy)'
+								}
 							</li>
 							<li className='text-sm'>
-								Illinois Eye Institute (Contact Lenses, Pediatric/Binocular
-								Vision)
+								{
+									'Illinois Eye Institute (Contact Lenses, Pediatric/Binocular Vision)'
+								}
 							</li>
 						</ul>
 						<h4 className='text-sm pb-4'>
@@ -62,12 +78,19 @@ const AboutUs = () => {
 					</div>
 				</div>
 				<div className='grid  mx-4 p-4 max-h-sm justify-items-center lg:mx-0 max-w-xl lg:grid-rows-3'>
-					<img
+					<Image
+						src='/drle.jpg.png'
+						alt='Dr. Le headshot'
+						className='object-contain justify-self-center mb-4 h-72 rounded-lg '
+						width='200'
+						height='100'
+					/>
+					{/* <img
 						src='/drle.jpg.png'
 						alt=''
 						className='object-contain justify-self-center mb-4 h-72 rounded-lg'
 						// width='200'
-					/>
+					/> */}
 					<div className='bg-secondaryColor border rounded-lg border-thirdColor p-4 lg:row-start-2 lg:row-end-3 shadow-2xl'>
 						<h3 className='font-bold text-lg mb-4 text-center'>Dr. Laura Le</h3>
 						<h4 className='text-sm'>
