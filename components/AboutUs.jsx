@@ -33,12 +33,12 @@ const AboutUs = () => {
 							Dr. Megan Lieu
 						</h3>
 						<h4 className='text-sm pb-4'>
-							Dr. Megan Lieu has been a long-time resident of Orange County. She
+							{`	Dr. Megan Lieu has been a long-time resident of Orange County. She
 							graduated from the University of California, Irvine with a
 							Bachelor of Science degree in Biology. She left California briefly
 							to pursue her Doctorate of Optometry at the Illinois College of
 							Optometry in Chicago. Dr. Lieu completed her externships at the
-							following locations:
+							following locations:`}
 						</h4>
 						<ul className='list-disc px-4 pb-4'>
 							<li className='text-sm'>
@@ -67,13 +67,10 @@ const AboutUs = () => {
 							surgery when she worked at the Laser Eye Canter.
 						</h4>
 						<h4 className='text-sm'>
-							Dr. Lieu partakes in the One Sight Program, providing
-							complimentary comprehensive exams and eyewear to the
-							underprivileged members of our community. Her favorite part of
-							practicing Optometry is seeing a patient's face light up in the
+							{`Dr. Lieu partakes in the One Sight Program, providing complimentary comprehensive exams and eyewear to the underprivileged members of our community. Her favorite part of practicing Optometry is seeing a patient's face light up in the
 							exam room with a new prescription. When time permits, Dr. Lieu
 							takes pleasure in traveling, gardening, drawing and spending time
-							with family and friends.
+							with family and friends.`}
 						</h4>
 					</div>
 				</div>
@@ -94,7 +91,7 @@ const AboutUs = () => {
 					<div className='bg-secondaryColor border rounded-lg border-thirdColor p-4 lg:row-start-2 lg:row-end-3 shadow-2xl'>
 						<h3 className='font-bold text-lg mb-4 text-center'>Dr. Laura Le</h3>
 						<h4 className='text-sm'>
-							Dr. Laura Le graduated from the University of California, San
+							{`Dr. Laura Le graduated from the University of California, San
 							Diego with a Bachelor of Arts degree in Psychology. She then went
 							on to attain her Doctorate of Optometry degree from the Southern
 							California College of Optometry. She is board certified to treat
@@ -103,7 +100,7 @@ const AboutUs = () => {
 							professional eyecare near you and believes in quality care that
 							comes from the relationship between doctor and patients. In her
 							spare time, she enjoys spending time with her family and her
-							French bulldog.
+							French bulldog.`}
 						</h4>
 					</div>
 				</div>
